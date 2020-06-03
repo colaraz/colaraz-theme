@@ -41,12 +41,12 @@
 
   colaraz_settings_url = '{}://{}.{}/{}'.format(protocol, identifier, domain, user_urls.get('settings')) if user_urls.has_key('settings') else '#'
 %>
-
 <div class="nav-item hidden-mobile nav-item-dropdown" tabindex="-1">
   <div class="toggle-user-dropdown" role="button" aria-label=${_("Options Menu")} aria-expanded="false" tabindex="0" aria-controls="user-menu">
   <div class="profile-block">
     <div class="img-frame">
-      <img src="${profile_image_url}" alt="${user.profile.name}" title="${user.profile.name}">
+      <%namespace name='static' file='../static_content.html'/>
+      <img src="${static.url('images/user-icon.png')}" alt="${ user.username }" title="${user.profile.name}">
     </div>
     <strong class="username">${displayname}</strong>
   </div>
