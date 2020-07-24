@@ -14,7 +14,7 @@
 lms/static/css/
 lms/static/certificates/css/
 cms/static/css/
-ecommerce/static/css/
+colaraz-ecommerce/static/css/
 common/static/common/css/vendor/
 node_modules
 
@@ -26,6 +26,6 @@ node_modules
 */cms/static/css/*
 */cms/static/sass/*.css
 */cms/static/sass/*.css.map
-*/ecommerce/static/css/*
-*/ecommerce/static/sass/*.css
-*/ecommerce/static/sass/*.css.map
+*/colaraz-ecommerce/static/css/*
+*/colaraz-ecommerce/static/sass/*.css
+*/colaraz-ecommerce/static/sass/*.css.map
