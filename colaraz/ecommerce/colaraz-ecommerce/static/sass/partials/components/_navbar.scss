@@ -89,7 +89,6 @@
 
 .user-menu {
   > .nav-button {
-    border: 0;
     color: white;
     background: transparent;
 
@@ -100,10 +99,6 @@
       > .icon {
         color: palette(grayscale, white-t);
       }
-    }
-
-    &.dropdown-toggle {
-      border-left: 1px solid white;
     }
   }
 
