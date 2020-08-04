@@ -138,7 +138,7 @@ else:
       % endif
 
       % if cert_status['status'] == 'downloadable' and enrollment.mode == 'verified' and cert_status['mode'] == 'honor':
-      <!-- [COLARAZ_CUSTOM] Changing ID verification message for the user who has got certificate in honor mode. -->
+        ## [COLARAZ_CUSTOM] Changing ID verification message for the user who has got certificate in honor mode.
         <div class="certificate-explanation">
             ${_('An honor code {cert_name_short} has been granted to you. To update your {cert_name_long} to verified {cert_name_short}, contact instructor to regenerate {cert_name_long}.').format(cert_name_short=cert_name_short, cert_name_long=cert_name_long)}
         </div>
