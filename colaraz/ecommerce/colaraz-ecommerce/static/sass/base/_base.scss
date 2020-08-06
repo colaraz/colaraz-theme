@@ -24,6 +24,14 @@ a,
     }
 }
 
+input,
+button {
+
+    &:focus {
+        outline-color: $primary;
+    }
+}
+
 .wrapper {
     min-height: 100%;
     position: relative;
