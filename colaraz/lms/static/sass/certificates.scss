@@ -1,0 +1,16 @@
+// ------------------------------
+// Certificates styling
+// Extra sass included for certificates
+
+// Defualt certificates tylies can be overide here
+
+.footer-app {
+    border-top: 0;
+    padding-top: 0;
+    text-align: center;
+
+    .footer-app-copyright {
+        width: 100%;
+        margin: 0;
+    }
+}
