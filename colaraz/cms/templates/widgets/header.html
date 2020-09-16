@@ -213,7 +213,7 @@
             colaraz_recommendations_url = '{}{}'.format(base_url, user_urls.get('recommendations')) if 'recommendations' in user_urls else '#'
             colaraz_mentoring_url = '{}{}'.format(base_url, user_urls.get('mentoring')) if 'mentoring' in user_urls else '#'
             colaraz_scholarship_url = '{}{}'.format(base_url, user_urls.get('scholarship')) if 'scholarship' in user_urls else '#'
-            colaraz_finance_url = '{}{}'.format(base_url, user_urls.get('finance')) if 'finance' in user_urls else '#'
+            colaraz_finance_url = '{}://{}'.format(protocol, user_urls.get('finance')) if 'finance' in user_urls else '#'
       %>
     <div class="header-navigations">
         <nav class="primary-navigation">
