@@ -27,6 +27,25 @@
 
 .view-in-course {
 
+    table {
+
+        &.exam-attempts-table {
+            table-layout: auto;
+        }
+    }
+
+    .proctored_exam_status {
+
+        .exam-timer {
+            color: $black;
+        }
+
+        &.is-fixed {
+            left: 20px;
+            width: calc(100% - 40px);
+        }
+    }
+
     .container {
         max-width: $container-default;
     }
