@@ -77,9 +77,9 @@ from openedx.features.colaraz_features.models import ColarazUserProfile
     </div>
     <div class="mobile-menu hidden" aria-label=${_("More Options")} role="menu" id="mobile-menu"></div>
     % if user.is_authenticated:
-        <% 
+        <%
             protocol = getattr(settings, 'COLARAZ_DOMAIN_PROTOCOL', 'http')
-            identifier = user.colaraz_profile.site_identifier 
+            identifier = user.colaraz_profile.site_identifier
             domain = settings.COLARAZ_SUB_DOMAIN
             base_url = '{}://{}.{}/'.format(protocol, identifier, domain)
             user_urls = user.colaraz_profile.role_based_urls
@@ -111,12 +111,13 @@ from openedx.features.colaraz_features.models import ColarazUserProfile
                     <li><a href="${colaraz_ecosystem_url}"><span class="ecosystem-link"></span>Ecosystem</a></li>
                     <li><a href="${colaraz_recruiting_url}"><span class="recruiting-link"></span>Recruiting</a></li>
                     <li><a href="${colaraz_management_url}"><span class="projects-link"></span>Management</a></li>
-                    
+
                     % if configuration_helpers.get_value('COMPANY_TYPE') == 'enterprise plus':
                     <li><a href="${colaraz_performance_url}"><span class="talent-link"></span>Performance</a></li>
                     % endif
                     <li class="active"><a href="${colaraz_development_url}"><span class="development-link"></span>Development</a></li>
-                    <li><a href="${colaraz_finance_url}"><span class="finance-link"></span>Finance</a></li>
+                    <!-- TODO: Temporary change. We will revert it later  -->
+                    <!-- <li><a href="${colaraz_finance_url}"><span class="finance-link"></span>Finance</a></li> -->
                 </ul>
             </div>
         </nav>

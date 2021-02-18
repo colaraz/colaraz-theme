@@ -137,7 +137,7 @@
         invite_friend_url = '{}{}'.format(base_url, user_urls.get('inviteFriend', '#'))
         see_all_notifications_url = '{}{}'.format(base_url, colaraz_notifications_url)
         colaraz_ecosystem_url = '{}cvsocial/activity?{}'.format(base_url, user_urls.get('ecosystem', '#'))
-        
+
       %>
       <nav class="nav-account nav-is-signedin nav-dd ui-right" aria-label="${_('Account')}">
         <h2 class="sr-only">${_("Account Navigation")}</h2>
@@ -236,7 +236,8 @@
                         <li><a href="${colaraz_performance_url}"><span class="talent-link"></span>Performance</a></li>
                     % endif
                     <li class="active"><a href="${colaraz_development_url}"><span class="development-link"></span>Development</a></li>
-                    <li><a href="${colaraz_finance_url}"><span class="finance-link"></span>Finance</a></li>
+                    <!-- TODO: Temporary change. We will revert it later  -->
+                    <!-- <li><a href="${colaraz_finance_url}"><span class="finance-link"></span>Finance</a></li> -->
                 </ul>
             </div>
         </nav>
