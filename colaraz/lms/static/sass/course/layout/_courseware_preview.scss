@@ -27,6 +27,38 @@
 
 .view-in-course {
 
+    table {
+
+        &.exam-attempts-table {
+            table-layout: auto;
+            font-size: 13px;
+
+            td {
+                padding: 5px;
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+            }
+
+            th {
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+                padding: 5px;
+            }
+        }
+    }
+
+    .proctored_exam_status {
+
+        .exam-timer {
+            color: $black;
+        }
+
+        &.is-fixed {
+            left: 20px;
+            width: calc(100% - 40px);
+        }
+    }
+
     .container {
         max-width: $container-default;
     }

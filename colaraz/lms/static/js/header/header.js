@@ -3,11 +3,14 @@
  * screen sizes for the responsive lms header.
 */
 
-$(window).on('load', function () {
+$(document).on('ready', function () {
     // show preloader until page content is loaded
     $('#window-wrap').fadeIn(function() {
         $('#preload').fadeOut();
     });
+});
+
+$(window).on('load', function () {
 
     // Reset nav menu cookie on login
     $(document).find('.login-button').on('click', function () {

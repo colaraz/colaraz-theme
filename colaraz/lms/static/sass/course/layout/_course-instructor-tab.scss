@@ -7,13 +7,6 @@
     .instructor-dashboard-content-2 {
         padding: $baseline;
 
-        .idash-section {
-
-            .subsection-title {
-                font-weight: 400;
-            }
-        }
-
         .instructor-nav {
             border-bottom: 2px solid $gray-lightest;
 
@@ -70,6 +63,10 @@
 
         .idash-section {
 
+            .subsection-title {
+                font-weight: 400;
+            }
+
             h3 {
                 margin-bottom: $baseline;
             }
@@ -89,6 +86,23 @@
                 &:focus {
                     outline: none;
                     box-shadow: none !important;
+                }
+            }
+
+            &#special_exams {
+
+                .wrap {
+                    margin-bottom: $baseline;
+
+                    h3 {
+                        margin: 0;
+                        padding: 6px 10px 3px;
+
+                        .ui-icon {
+                            left: auto;
+                            right: .5em;
+                        }
+                    }
                 }
             }
 
@@ -229,4 +243,14 @@
 
 .certificate-invalidation-user-label{
     margin-right: 100px;
+}
+
+.view-instructordash {
+
+    #modalContainer {
+
+        .modal {
+            width: 480px !important;
+        }
+    }
 }

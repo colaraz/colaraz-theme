@@ -350,7 +350,7 @@
             </ul>
         </div>
 
-        % if user.is_authenticated:
+        % if user.is_authenticated and not mobile_view:
         <div class="side-container">
           %if display_sidebar_account_activation_message:
             <div class="sidebar-notification">
