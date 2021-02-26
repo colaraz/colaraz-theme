@@ -18,7 +18,7 @@
   self.real_user = getattr(user, 'real_user', user)
   profile_image_url = colaraz_profile.profile_image_url or "http://polymath.colaraz.net/cvsocial/_graphics/icons/user/defaultsmall.gif"
   username = self.real_user.username
-  resume_block = retrieve_last_sitewide_block_completed(username)
+  resume_block = retrieve_last_sitewide_block_completed(self.real_user)
   displayname = self.real_user.profile.name
   protocol = getattr(settings, 'COLARAZ_DOMAIN_PROTOCOL', 'http')
 
