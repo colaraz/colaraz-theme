@@ -564,8 +564,7 @@ function notificationsIconClick(ecosystemUrl) {
 const targetOrigin = "https://identity.colaraz.net";
 const checkSessionUrl = targetOrigin+"/Account/CheckSession";
 
-function checkSessionOnColaraz(ecosystemUrl) {
-    console.log("ecosystem", ecosystemUrl);
+function checkSessionOnColaraz() {
     let sessionIframe = window.document.createElement('iframe');
     sessionIframe.style.display = 'none';
     sessionIframe.src = checkSessionUrl;
@@ -576,12 +575,14 @@ function checkSessionOnColaraz(ecosystemUrl) {
 function AddEventListener() {
     window.addEventListener("message", receiveMessage, false);
 }
+
 function receiveMessage(e) {
     if (event.origin !== targetOrigin)
         return;
     const status = e.data;
     if (status.isUserLoggedIn === false) {
-    console.log('user logged out');
+        document.cookie = "sessionid= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+        window.location.replace("/logout")
    }
 }
 
