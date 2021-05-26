@@ -274,6 +274,7 @@ $(document).ready(function() {
     createMobileMenu();
     makeAnimatedHeader();
     edlySetupNavMenu();
+    checkSessionOnColaraz();
 
     if (isColarazNotificationsApiEnabled) {
         getAndPopulateNotifications();
@@ -421,8 +422,8 @@ function getAndPopulateNotifications() {
 
             handleNotificationsListing(notifications);
             handleNotificationsCount(unreadNotificationsCount);
-            
-        }, 
+
+        },
         error: function (resp) {
             console.error(`Notifications API gave following error: ${resp.message}`);
         },
@@ -559,3 +560,32 @@ function notificationsIconClick(ecosystemUrl) {
     removeNotificationsCount();
     loginToEcosystem(ecosystemUrl);
 }
+
+const targetOrigin = "https://identity.colaraz.net";
+const checkSessionUrl = targetOrigin+"/Account/CheckSession";
+
+function checkSessionOnColaraz(ecosystemUrl) {
+    console.log("ecosystem", ecosystemUrl);
+    let sessionIframe = window.document.createElement('iframe');
+    sessionIframe.style.display = 'none';
+    sessionIframe.src = checkSessionUrl;
+    sessionIframe.id = "checkSessionIframe";
+    window.document.body.appendChild(sessionIframe);
+}
+
+function AddEventListener() {
+    window.addEventListener("message", receiveMessage, false);
+}
+function receiveMessage(e) {
+    if (event.origin !== targetOrigin)
+        return;
+    const status = e.data;
+    if (status.isUserLoggedIn === false) {
+    console.log('user logged out');
+   }
+}
+
+setInterval(function () {
+    AddEventListener();
+    document.getElementById("checkSessionIframe").contentWindow.postMessage("colaraz.web.edly", targetOrigin);
+}, 60000);
