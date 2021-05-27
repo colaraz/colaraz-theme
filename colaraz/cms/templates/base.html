@@ -264,11 +264,12 @@ from openedx.core.release import RELEASE_LINE
 
         // Colaraz check session variables
         var isColarazCheckSessionEnabled = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('ENABLE', False) | n, dump_js_escaped_json};
-        var colarazIdpUrl = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_IDP_URL')};"
-        var colarazCheckSessionUrl = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('CHECK_SESSION_URL')};"
+        var colarazIdpUrl = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_IDP_URL')}";
+        var colarazCheckSessionUrl = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('CHECK_SESSION_URL')}";
         var colarazCheckSessionRefreshTime = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('REFRESH_TIME_MILLISECONDS', 60000)};
-        var colarazCheckSessionKey = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_CHECK_SESSION_KEY')};"
+        var colarazCheckSessionKey = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_CHECK_SESSION_KEY')}";
         var edXLogoutUrl = "${reverse('logout')}";
+        var currentUserEmail = "${user.email}";
 
       </script>
     <%include file="widgets/segment-io-footer.html" />
