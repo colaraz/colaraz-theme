@@ -55,6 +55,14 @@ $(document).ready(function (){
         getAndPopulateJobAlerts();
         setInterval(getAndPopulateJobAlerts, colarazJobAlertsRefreshTime);
     }
+
+    if (isColarazCheckSessionEnabled) {
+        checkSessionOnColaraz();
+        setInterval(function () {
+            AddEventListener();
+            document.getElementById("checkSessionIframe").contentWindow.postMessage(colarazCheckSessionKey, colarazIdpUrl);
+        }, colarazCheckSessionRefreshTime);
+    }
 });
 
 function getAndPopulateNotifications() {
@@ -206,6 +214,27 @@ function loginToEcosystem(ecosystemUrl) {
 }
 
 function notificationsIconClick(ecosystemUrl){
-    removeNotificationsCount(); 
+    removeNotificationsCount();
     loginToEcosystem(ecosystemUrl);
+}
+
+function checkSessionOnColaraz() {
+    let sessionIframe = window.document.createElement('iframe');
+    sessionIframe.style.display = 'none';
+    sessionIframe.src = colarazCheckSessionUrl;
+    sessionIframe.id = "checkSessionIframe";
+    window.document.body.appendChild(sessionIframe);
+}
+
+function AddEventListener() {
+    window.addEventListener("message", receiveMessage, false);
+}
+
+function receiveMessage(e) {
+    if (event.origin !== colarazIdpUrl)
+        return;
+    const status = e.data;
+    if (status.isUserLoggedIn === false || status.userName !== currentUserEmail) {
+        window.location.replace(edXLogoutUrl)
+   }
 }
