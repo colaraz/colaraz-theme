@@ -261,6 +261,15 @@ from openedx.core.release import RELEASE_LINE
         var colarazJobAlertsMarkingUrl = "${reverse('colaraz_features:job_alerts_handler', kwargs={'api_method': 'mark'})}";
         var isColarazJobAlertsApiEnabled = ${getattr(settings, 'COLARAZ_JOB_ALERTS', {}).get('ENABLE', False) | n, dump_js_escaped_json};
         var colarazJobAlertsRefreshTime = ${getattr(settings, 'COLARAZ_JOB_ALERTS', {}).get('REFRESH_TIME_MILLISECONDS', 30000)};
+
+        // Colaraz check session variables
+        var isColarazCheckSessionEnabled = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('ENABLE', False) | n, dump_js_escaped_json};
+        var colarazIdpUrl = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_IDP_URL')};
+        var colarazCheckSessionUrl = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('CHECK_SESSION_URL')};
+        var colarazCheckSessionRefreshTime = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('REFRESH_TIME_MILLISECONDS', 60000)};
+        var colarazCheckSessionKey = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_CHECK_SESSION_KEY')};
+        var edXLogoutUrl = "${reverse('logout')}";
+
       </script>
     <%include file="widgets/segment-io-footer.html" />
     <script type="text/javascript" src="${static.url('js/header.js')}"></script>

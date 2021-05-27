@@ -274,7 +274,6 @@ $(document).ready(function() {
     createMobileMenu();
     makeAnimatedHeader();
     edlySetupNavMenu();
-    checkSessionOnColaraz();
 
     if (isColarazNotificationsApiEnabled) {
         getAndPopulateNotifications();
