@@ -285,8 +285,7 @@ $(document).ready(function() {
     }
     if (isColarazCheckSessionEnabled) {
         checkSessionOnColaraz();
-        AddEventListener();
-        setTimeout(postMessageToIdp, 1000); // for the first time it will called after 1 sec
+        setTimeout(postMessageToIdp, 3000); // for the first time it will called after 3 seconds
         setInterval(postMessageToIdp, colarazCheckSessionRefreshTime);
     }
 });
@@ -569,6 +568,7 @@ function notificationsIconClick(ecosystemUrl) {
 function checkSessionOnColaraz() {
     let sessionIframe = window.document.createElement('iframe');
     sessionIframe.style.display = 'none';
+    sessionIframe.onload = AddEventListener
     sessionIframe.src = colarazCheckSessionUrl;
     sessionIframe.id = "checkSessionIframe";
     window.document.body.appendChild(sessionIframe);
