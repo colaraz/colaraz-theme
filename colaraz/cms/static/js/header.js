@@ -58,7 +58,7 @@ $(document).ready(function (){
 
     if (isColarazCheckSessionEnabled) {
         checkSessionOnColaraz();
-        setTimeout(postMessageToIdp, 3000); // for the first time it will called after 1 sec
+        setTimeout(postMessageToIdp, 3000); // for the first time it will called after 3 seconds
         setInterval(postMessageToIdp, colarazCheckSessionRefreshTime);
     }
 });
