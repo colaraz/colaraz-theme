@@ -58,10 +58,9 @@ $(document).ready(function (){
 
     if (isColarazCheckSessionEnabled) {
         checkSessionOnColaraz();
-        setInterval(function () {
-            AddEventListener();
-            document.getElementById("checkSessionIframe").contentWindow.postMessage(colarazCheckSessionKey, colarazIdpUrl);
-        }, colarazCheckSessionRefreshTime);
+        AddEventListener();
+        setTimeout(postMessageToIdp, 1000); // for the first time it will called after 1 sec
+        setInterval(postMessageToIdp, colarazCheckSessionRefreshTime);
     }
 });
 
@@ -224,6 +223,10 @@ function checkSessionOnColaraz() {
     sessionIframe.src = colarazCheckSessionUrl;
     sessionIframe.id = "checkSessionIframe";
     window.document.body.appendChild(sessionIframe);
+}
+
+function postMessageToIdp() {
+    document.getElementById("checkSessionIframe").contentWindow.postMessage(colarazCheckSessionKey, colarazIdpUrl);
 }
 
 function AddEventListener() {
