@@ -11,7 +11,6 @@ else:
 <%namespace name='static' file='static_content.html'/>
 
 <%!
-  from django.core.urlresolvers import reverse
   from django.utils.translation import ugettext as _
   from openedx.core.djangolib.markup import HTML, Text
   from openedx.core.djangolib.js_utils import (
@@ -40,20 +39,14 @@ else:
 <%block name="content">
 <div class="wrapper-mast wrapper">
   <header class="mast has-subtitle">
-    <%
-      index_url = reverse('course_handler', kwargs={'course_key_string': unicode(context_course.id)})
-    %>
     <h1 class="page-header">
-      <small class="subtitle">
-        ${_("Tools")} -
-        %if library:
-          ${_("Library Export")}
-        %else:
-          ${_("Course Export")}
-        %endif
-      </small>
-      <span class="sr">&gt; </span>
-      <a href="${index_url}"><span class="text">${context_course.display_name_with_default}</span></a>
+      <small class="subtitle">${_("Tools")}</small>
+        <span class="sr">&gt; </span>
+      %if library:
+        ${_("Library Export")}
+      %else:
+        ${_("Course Export")}
+      %endif
     </h1>
   </header>
 </div>
