@@ -586,6 +586,7 @@ function receiveMessage(e) {
     if (event.origin !== colarazIdpUrl)
         return;
     const status = e.data;
+    debugger;
     if (status.isUserLoggedIn === false || status.userName !== currentUserEmail) {
         window.location.replace(edXLogoutUrl)
    }
