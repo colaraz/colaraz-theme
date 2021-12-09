@@ -30,6 +30,7 @@
     from openedx.core.release import RELEASE_LINE
     from pipeline_mako import render_require_js_path_overrides
     from student.models import CourseEnrollment
+    from django.contrib.auth.models import User
 %>
 
 <%
@@ -318,7 +319,6 @@
 </head>
 
 <body class="${static.dir_rtl()} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}" data-nav-menu-url="${marketing_link('NAV_MENU')}" data-zendesk-widget-url="${marketing_link('ZENDESK-WIDGET')}">
-
     <%static:optional_include_mako file="body-initial.html" is_theming_enabled="True" />
 <div id="page-prompt"></div>
 
@@ -357,7 +357,6 @@
               <%include file="${static.get_template_path('registration/account_activation_sidebar_notice.html')}" />
             </div>
           %endif
-
           <div class="side-widget side-profile">
             <div class="side-profile-row">
               <div class="avatar">
@@ -478,7 +477,11 @@
         var colarazCheckSessionKey = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_CHECK_SESSION_KEY')}";
         var edXLogoutUrl = "${reverse('logout')}";
         % if user.is_authenticated:
-            var currentUserEmail = "${user.email}";
+          % if user.id != request.session['_auth_user_id']:
+              var currentUserEmail = "${User.objects.get(id=request.session['_auth_user_id']).email}";
+          % else:
+              var currentUserEmail = "${user.email}";
+          % endif     
         % endif
 
         // Colaraz Discussion Forum API variables
