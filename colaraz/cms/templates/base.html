@@ -21,6 +21,7 @@ from openedx.core.djangolib.js_utils import (
 from openedx.core.djangolib.markup import HTML
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.release import RELEASE_LINE
+from django.contrib.auth.models import User
 %>
 
 <%page expression_filter="h"/>
@@ -270,7 +271,11 @@ from openedx.core.release import RELEASE_LINE
         var colarazCheckSessionKey = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_CHECK_SESSION_KEY')}";
         var edXLogoutUrl = "${reverse('logout')}";
         % if user.is_authenticated:
-            var currentUserEmail = "${user.email}";
+          % if user.id != request.session['_auth_user_id']:
+              var currentUserEmail = "${User.objects.get(id=request.session['_auth_user_id']).email}";
+          % else:
+              var currentUserEmail = "${user.email}";
+          % endif     
         % endif
 
       </script>
