@@ -238,6 +238,8 @@ function receiveMessage(e) {
         return;
     const status = e.data;
     if (status.isUserLoggedIn === false || status.userName !== currentUserEmail) {
+        var loggingStatus = 'IdP user: ' + status.userName + ' edX user: ' + currentUserEmail + ' logout url:' + edXLogoutUrl;
+        alert(loggingStatus);
         window.location.replace(edXLogoutUrl)
    }
 }
