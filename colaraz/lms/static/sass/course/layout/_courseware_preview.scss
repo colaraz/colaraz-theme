@@ -51,13 +51,55 @@
         margin: $baseline*.5;
         width: auto;
 
+        @include media-up(md) {
+            top: 100px;
+            position: sticky;
+            z-index: 1;
+        }
+
         .exam-timer {
             color: $black;
+
+            @include media-down(md) {
+                padding: $baseline;
+            }
+
+            .exam-timer-clock {
+                background: #fff;
+
+                span {
+                    display: inline-block;
+                    min-width: 50px;
+                }
+            }
+
+            .exam-text {
+
+                &:after {
+
+                    @include media-down(md) {
+                        content: '';
+                        display: block;
+                        clear: both;
+                    }
+                }
+
+                @include media-down(md) {
+                    display: block;
+                    padding-bottom: $baseline;
+                    width: auto;
+                }
+            }
         }
 
         &.is-fixed {
             position: static;
             width: auto;
+
+            @include media-up(md) {
+                position: sticky;
+                top: 100px;
+            }
         }
     }
 
