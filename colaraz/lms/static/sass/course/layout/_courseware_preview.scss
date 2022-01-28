@@ -25,27 +25,7 @@
     }
 }
 
-.view-in-course {
-
-    table {
-
-        &.exam-attempts-table {
-            table-layout: auto;
-            font-size: 13px;
-
-            td {
-                padding: 5px;
-                font-size: 13px !important;
-                line-height: 1.4 !important;
-            }
-
-            th {
-                font-size: 13px !important;
-                line-height: 1.4 !important;
-                padding: 5px;
-            }
-        }
-    }
+body {
 
     .proctored_exam_status {
         margin: $baseline*.5;
@@ -66,10 +46,34 @@
 
             .exam-timer-clock {
                 background: #fff;
+                border-radius: 20px;
 
                 span {
                     display: inline-block;
                     min-width: 50px;
+                }
+            }
+
+            .exam-timer-clock {
+
+                #toggle_timer {
+                    background: $primary;
+                    border-radius: 0 20px 20px 0;
+                    color: $text-color;
+
+                    &:hover {
+                        background: $primary-dark;
+                    }
+                }
+            }
+
+            .exam-button-turn-in-exam {
+                background: $primary;
+                border-radius: 20px;
+                color: $text-color;
+
+                &:hover {
+                    background: $primary-dark;
                 }
             }
 
@@ -99,6 +103,29 @@
             @include media-up(md) {
                 position: sticky;
                 top: 100px;
+            }
+        }
+    }
+}
+
+.view-in-course {
+
+    table {
+
+        &.exam-attempts-table {
+            table-layout: auto;
+            font-size: 13px;
+
+            td {
+                padding: 5px;
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+            }
+
+            th {
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+                padding: 5px;
             }
         }
     }
