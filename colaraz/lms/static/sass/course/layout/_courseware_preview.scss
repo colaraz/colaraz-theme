@@ -6,6 +6,11 @@
 
 .content-wrapper {
 
+    &:before {
+        content: '';
+        display: table;
+    }
+
     .course-tabs {
         margin-top: 0;
         background: $gray-mid-border;
@@ -34,14 +39,17 @@ body {
         @include media-up(md) {
             top: 100px;
             position: sticky;
-            z-index: 1;
+            z-index: 12;
         }
 
         .exam-timer {
             color: $black;
+            padding: $baseline*.75 $baseline*.5;
 
-            @include media-down(md) {
-                padding: $baseline;
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
             }
 
             .exam-timer-clock {
@@ -78,15 +86,6 @@ body {
             }
 
             .exam-text {
-
-                &:after {
-
-                    @include media-down(md) {
-                        content: '';
-                        display: block;
-                        clear: both;
-                    }
-                }
 
                 @include media-down(md) {
                     display: block;
