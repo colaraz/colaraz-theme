@@ -475,13 +475,13 @@
         var colarazCheckSessionUrl = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('CHECK_SESSION_URL')}";
         var colarazCheckSessionRefreshTime = ${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('REFRESH_TIME_MILLISECONDS', 60000)};
         var colarazCheckSessionKey = "${getattr(settings, 'COLARAZ_CHECK_SESSION', {}).get('COLARAZ_CHECK_SESSION_KEY')}";
-        var edXLogoutUrl = "${reverse('logout')}";
+        var edXLogoutUrl = "${reverse('colaraz_features:session_logout')}";
         % if user.is_authenticated:
           % if user.id != request.session['_auth_user_id']:
               var currentUserEmail = "${User.objects.get(id=request.session['_auth_user_id']).email}";
           % else:
               var currentUserEmail = "${user.email}";
-          % endif     
+          % endif
         % endif
 
         // Colaraz Discussion Forum API variables

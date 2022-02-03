@@ -587,6 +587,18 @@ function receiveMessage(e) {
         return;
     const status = e.data;
     if (status.isUserLoggedIn === false || status.userName !== currentUserEmail) {
-        window.location.replace(edXLogoutUrl)
+        $.ajax({
+            type: 'POST',
+            url: edXLogoutUrl,
+            data: {
+                email: currentUserEmail,
+            },
+            success: function (response) {
+                location.reload();
+            },
+            error: function (response) {
+                console.log("Error occured while calling session api!!");
+            },
+        });
    }
 }
